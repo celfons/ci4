@@ -14,6 +14,7 @@
         "ext-intl": "*",
         "ext-json": "*",
         "ext-mbstring": "*",
+        "benedmunds/codeigniter-ion-auth": "4.x-dev",
         "laminas/laminas-escaper": "^2.9",
         "psr/log": "^1.1"
     },
@@ -119,5 +120,12 @@
         "cs": "Check the coding style",
         "cs-fix": "Fix the coding style",
         "test": "Run unit tests"
+    },
+    "minimum-stability": "dev",
+    "repositories": {
+        "ionAuth": {
+            "type": "vcs",
+            "url": "git@github.com:benedmunds/CodeIgniter-Ion-Auth.git"
+        }
     }
 }

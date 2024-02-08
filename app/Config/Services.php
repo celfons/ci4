@@ -3,6 +3,7 @@
 namespace Config;
 
 use CodeIgniter\Config\BaseService;
+use Config\IonAuth;
 
 /**
  * Services Configuration file.
@@ -29,4 +30,12 @@ class Services extends BaseService
      *     return new \CodeIgniter\Example();
      * }
      */
+    public static function ionAuth($getShared = true)
+    {
+        if ($getShared) {
+            return static::getSharedInstance('ionAuth');
+        }
+
+        return new IonAuth();
+    }
 }
