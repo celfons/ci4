@@ -16,7 +16,8 @@
         "ext-mbstring": "*",
         "benedmunds/codeigniter-ion-auth": "4.x-dev",
         "laminas/laminas-escaper": "^2.9",
-        "psr/log": "^1.1"
+        "psr/log": "^1.1",
+        "twbs/bootstrap": "dev-main"
     },
     "require-dev": {
         "codeigniter/coding-standard": "^1.7",
@@ -64,7 +65,8 @@
     },
     "autoload": {
         "psr-4": {
-            "CodeIgniter\\": "system/"
+            "CodeIgniter\\": "system/",
+            "GroceryCrud\\": "diretorio/da/biblioteca/grocerycrud/src"
         },
         "exclude-from-classmap": [
             "**/Database/Migrations/**"
