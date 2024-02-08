@@ -3,7 +3,7 @@
 use App\Libraries\GroceryCrud;
 
 class Examples extends BaseController
-{
+{   
 
 	public function customers_management()
 	{

@@ -5,14 +5,18 @@ use CodeIgniter\Router\RouteCollection;
 /** 
  * @var RouteCollection $routes
  */
-$routes->get('/', 'Home::index');
+$routes->setDefaultNamespace('App\Controllers');
+$routes->setDefaultController('Home');
+$routes->setDefaultMethod('index');
+$routes->setTranslateURIDashes(false);
+$routes->set404Override();
 
 $routes->group('auth', ['namespace' => 'IonAuth\Controllers'], function ($routes) {
     $routes->add('login', 'Auth::login');
 	$routes->get('logout', 'Auth::logout');
 	$routes->add('forgot_password', 'Auth::forgot_password');
 	// $routes->get('/', 'Auth::index');
-	// $routes->add('create_user', 'Auth::create_user');
+	// $routes->add('create_user    ', 'Auth::create_user');
 	// $routes->add('edit_user/(:num)', 'Auth::edit_user/$1');
 	// $routes->add('create_group', 'Auth::create_group');
 	// $routes->get('activate/(:num)', 'Auth::activate/$1');
