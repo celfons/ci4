@@ -6,9 +6,21 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 
-$routes->get('/', 'Home::index');	
-$routes->get('/clientes', 'Cliente::index');
-$routes->add('/clientes/add', 'Cliente::add');
+ $routes->setDefaultNamespace('App\Controllers');
+ $routes->setDefaultController('Home');
+ $routes->setDefaultMethod('index');
+ $routes->setTranslateURIDashes(false);
+ $routes->set404Override();
+ $routes->setAutoRoute(false);
+ 
+ $routes->get('/', 'Home::index');
+ $routes->get('/customers', 'Examples::customers_management');
+ $routes->add('/customers/add', 'Examples::customers_management');
+ $routes->add('/customers/insert', 'Examples::customers_management');
+ $routes->add('/customers/update/(:num)', 'Examples::customers_management');
+ $routes->add('/customers/edit/(:num)', 'Examples::customers_management');
+ $routes->add('/customers/delete/(:num)', 'Examples::customers_management');
+
 
 $routes->group('auth', ['namespace' => 'IonAuth\Controllers'], function ($routes) {
     $routes->add('login', 'Auth::login');
