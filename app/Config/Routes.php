@@ -20,6 +20,8 @@ use CodeIgniter\Router\RouteCollection;
  $routes->add('/customers/update/(:num)', 'Examples::customers_management');
  $routes->add('/customers/edit/(:num)', 'Examples::customers_management');
  $routes->add('/customers/delete/(:num)', 'Examples::customers_management');
+ $routes->add('/customers/delete_multiple', 'Examples::customers_management');
+ $routes->add('/customers/ajax_list', 'Examples::customers_management');
 
 
 $routes->group('auth', ['namespace' => 'IonAuth\Controllers'], function ($routes) {
