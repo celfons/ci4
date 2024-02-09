@@ -14,15 +14,19 @@ use CodeIgniter\Router\RouteCollection;
  $routes->setAutoRoute(false);
  
  $routes->get('/', 'Home::index');
- $routes->get('/customers', 'Examples::customers_management');
- $routes->add('/customers/add', 'Examples::customers_management');
- $routes->add('/customers/insert', 'Examples::customers_management');
- $routes->add('/customers/update/(:num)', 'Examples::customers_management');
- $routes->add('/customers/edit/(:num)', 'Examples::customers_management');
- $routes->add('/customers/delete/(:num)', 'Examples::customers_management');
- $routes->add('/customers/delete_multiple', 'Examples::customers_management');
- $routes->add('/customers/ajax_list', 'Examples::customers_management');
-
+ $routes->get('/customers', 'Examples::customers');
+ $routes->add('/customers/add', 'Examples::customers');
+ $routes->add('/customers/insert', 'Examples::customers');
+ $routes->add('/customers/insert_validation', 'Examples::customers');
+ $routes->add('/customers/update/(:num)', 'Examples::customers');
+ $routes->add('/customers/update_validation/(:num)', 'Examples::customers');
+ $routes->add('/customers/success/(:num)', 'Examples::customers');
+ $routes->add('/customers/edit/(:num)', 'Examples::customers');
+ $routes->add('/customers/delete/(:num)', 'Examples::customers');
+ $routes->add('/customers/delete_multiple', 'Examples::customers');
+ $routes->add('/customers/ajax_list', 'Examples::customers');
+ $routes->add('/customers/export', 'Examples::customers');
+ $routes->add('/customers/print', 'Examples::customers');
 
 $routes->group('auth', ['namespace' => 'IonAuth\Controllers'], function ($routes) {
     $routes->add('login', 'Auth::login');
