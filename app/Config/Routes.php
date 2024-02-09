@@ -14,7 +14,7 @@ use CodeIgniter\Router\RouteCollection;
  $routes->setAutoRoute(false);
  
  $routes->get('/', 'Home::index');
- $routes->get('/customers', 'Examples::customers');
+ $routes->get('/customers', 'Examples::customers', ['filter' => 'authFilter']);
  $routes->add('/customers/add', 'Examples::customers');
  $routes->add('/customers/insert', 'Examples::customers');
  $routes->add('/customers/insert_validation', 'Examples::customers');
