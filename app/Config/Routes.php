@@ -15,20 +15,33 @@ use CodeIgniter\Router\RouteCollection;
 
  $routes->get('/', 'Home::index');
 
- $routes->get('/', 'Home::index');
- $routes->get('/customers', 'CustomerController::index', ['filter' => 'authFilter']);
- $routes->add('/customers/add', 'CustomerController::index');
- $routes->add('/customers/insert', 'CustomerController::index');
- $routes->add('/customers/insert_validation', 'CustomerController::index');
- $routes->add('/customers/update/(:num)', 'CustomerController::index');
- $routes->add('/customers/update_validation/(:num)', 'CustomerController::index');
- $routes->add('/customers/success/(:num)', 'CustomerController::index');
- $routes->add('/customers/edit/(:num)', 'CustomerController::index');
- $routes->add('/customers/delete/(:num)', 'CustomerController::index');
- $routes->add('/customers/delete_multiple', 'CustomerController::index');
- $routes->add('/customers/ajax_list', 'CustomerController::index');
- $routes->add('/customers/export', 'CustomerController::index');
- $routes->add('/customers/print', 'CustomerController::index');
+$routes->get('/customers', 'CustomerController::index', ['filter' => 'authFilter']);
+$routes->add('/customers/add', 'CustomerController::index');
+$routes->add('/customers/insert', 'CustomerController::index');
+$routes->add('/customers/insert_validation', 'CustomerController::index');
+$routes->add('/customers/update/(:num)', 'CustomerController::index');
+$routes->add('/customers/update_validation/(:num)', 'CustomerController::index');
+$routes->add('/customers/success/(:num)', 'CustomerController::index');
+$routes->add('/customers/edit/(:num)', 'CustomerController::index');
+$routes->add('/customers/delete/(:num)', 'CustomerController::index');
+$routes->add('/customers/delete_multiple', 'CustomerController::index');
+$routes->add('/customers/ajax_list', 'CustomerController::index');
+$routes->add('/customers/export', 'CustomerController::index');
+$routes->add('/customers/print', 'CustomerController::index');
+
+$routes->get('/service-order', 'ServiceOrderController::index', ['filter' => 'authFilter']);
+$routes->add('/service-order/add', 'ServiceOrderController::index');
+$routes->add('/service-order/insert', 'ServiceOrderController::index');
+$routes->add('/service-order/insert_validation', 'ServiceOrderController::index');
+$routes->add('/service-order/update/(:num)', 'ServiceOrderController::index');
+$routes->add('/service-order/update_validation/(:num)', 'ServiceOrderController::index');
+$routes->add('/service-order/success/(:num)', 'ServiceOrderController::index');
+$routes->add('/service-order/edit/(:num)', 'ServiceOrderController::index');
+$routes->add('/service-order/delete/(:num)', 'ServiceOrderController::index');
+$routes->add('/service-order/delete_multiple', 'ServiceOrderController::index');
+$routes->add('/service-order/ajax_list', 'ServiceOrderController::index');
+$routes->add('/service-order/export', 'ServiceOrderController::index');
+$routes->add('/service-order/print', 'ServiceOrderController::index');
 
 $routes->group('auth', ['namespace' => 'IonAuth\Controllers'], function ($routes) {
     $routes->add('login', 'Auth::login');
