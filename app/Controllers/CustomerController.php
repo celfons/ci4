@@ -3,10 +3,10 @@ namespace App\Controllers;
 
 use App\Libraries\GroceryCrud;
 
-class Examples extends BaseController
+class CustomerController extends BaseController
 {   
 
-	public function customers()
+	public function index()
 	{
         try {
             $crud = new GroceryCrud();

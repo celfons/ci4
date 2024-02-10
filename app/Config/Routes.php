@@ -12,21 +12,23 @@ use CodeIgniter\Router\RouteCollection;
  $routes->setTranslateURIDashes(false);
  $routes->set404Override();
  $routes->setAutoRoute(false);
- 
+
  $routes->get('/', 'Home::index');
- $routes->get('/customers', 'Examples::customers', ['filter' => 'authFilter']);
- $routes->add('/customers/add', 'Examples::customers');
- $routes->add('/customers/insert', 'Examples::customers');
- $routes->add('/customers/insert_validation', 'Examples::customers');
- $routes->add('/customers/update/(:num)', 'Examples::customers');
- $routes->add('/customers/update_validation/(:num)', 'Examples::customers');
- $routes->add('/customers/success/(:num)', 'Examples::customers');
- $routes->add('/customers/edit/(:num)', 'Examples::customers');
- $routes->add('/customers/delete/(:num)', 'Examples::customers');
- $routes->add('/customers/delete_multiple', 'Examples::customers');
- $routes->add('/customers/ajax_list', 'Examples::customers');
- $routes->add('/customers/export', 'Examples::customers');
- $routes->add('/customers/print', 'Examples::customers');
+
+ $routes->get('/', 'Home::index');
+ $routes->get('/customers', 'CustomerController::index', ['filter' => 'authFilter']);
+ $routes->add('/customers/add', 'CustomerController::index');
+ $routes->add('/customers/insert', 'CustomerController::index');
+ $routes->add('/customers/insert_validation', 'CustomerController::index');
+ $routes->add('/customers/update/(:num)', 'CustomerController::index');
+ $routes->add('/customers/update_validation/(:num)', 'CustomerController::index');
+ $routes->add('/customers/success/(:num)', 'CustomerController::index');
+ $routes->add('/customers/edit/(:num)', 'CustomerController::index');
+ $routes->add('/customers/delete/(:num)', 'CustomerController::index');
+ $routes->add('/customers/delete_multiple', 'CustomerController::index');
+ $routes->add('/customers/ajax_list', 'CustomerController::index');
+ $routes->add('/customers/export', 'CustomerController::index');
+ $routes->add('/customers/print', 'CustomerController::index');
 
 $routes->group('auth', ['namespace' => 'IonAuth\Controllers'], function ($routes) {
     $routes->add('login', 'Auth::login');
