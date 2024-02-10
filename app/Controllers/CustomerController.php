@@ -2,6 +2,7 @@
 namespace App\Controllers;
 
 use App\Libraries\GroceryCrud;
+use \Exception;
 
 class CustomerController extends BaseController
 {   
@@ -18,8 +19,9 @@ class CustomerController extends BaseController
             $output = $crud->render();
 
             return $this->_exampleOutput($output);
-        } catch (Exception $e) {
-            return json_encode($e->getMessage());
+        } catch (\Exception $e) {
+            var_dump($e);
+            return $this->response->setJSON(['error' => $e->getMessage()]);
         }
 	}
 

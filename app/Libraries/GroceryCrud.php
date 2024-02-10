@@ -542,8 +542,8 @@ class grocery_CRUD_Model_Driver extends grocery_CRUD_Field_Types
                             $temp_where_query_array = [];
 
                             foreach ($temp_relation[$search_field] as $relation_field) {
-                                $escaped_text = $this->basic_model->escape_str($search_text);
-                                $temp_where_query_array[] = $relation_field . ' LIKE \'%' . $escaped_text . '%\'';
+                                $escaped_text = $search_text;
+                                $temp_where_query_array[] = $relation_field . " LIKE '%" . $escaped_text . "%'";
                             }
                             if (!empty($temp_where_query_array)) {
                                 $this->where('(' . implode(' OR ', $temp_where_query_array) . ')', null);
@@ -600,14 +600,14 @@ class grocery_CRUD_Model_Driver extends grocery_CRUD_Field_Types
                         {
                             foreach($temp_relation[$column->field_name] as $search_field)
                             {
-                                $escaped_text = $this->basic_model->escape_str($search_text);
-                                $temp_where_query_array[] = $search_field . ' LIKE \'%' . $escaped_text . '%\'';
+                                $escaped_text = $search_text;
+                                $temp_where_query_array[] = $search_field . " LIKE '%". $escaped_text . "%'";
                             }
                         }
                         else
                         {
-                            $escaped_text = $this->basic_model->escape_str($search_text);
-                            $temp_where_query_array[] = $temp_relation[$column->field_name] . ' LIKE \'%' . $escaped_text . '%\'';
+                            $escaped_text = $search_text;
+                            $temp_where_query_array[] = $temp_relation[$column->field_name] . " LIKE '%" . $escaped_text . "%'";
                         }
                     }
                     elseif(isset($this->relation_n_n[$column->field_name]))
@@ -618,8 +618,8 @@ class grocery_CRUD_Model_Driver extends grocery_CRUD_Field_Types
                         isset($field_types[$column->field_name]) &&
                         !in_array($field_types[$column->field_name]->type, array('date', 'datetime', 'timestamp'))
                     ) {
-                        $escaped_text = $this->basic_model->escape_str($search_text);
-                        $temp_where_query_array[] =  '`' . $basic_table . '`.' . $column->field_name . ' LIKE \'%' . $escaped_text . '%\'';
+                        $escaped_text = $search_text;
+                        $temp_where_query_array[] =  '`' . $basic_table . '`.' . $column->field_name . " LIKE '%" . $escaped_text . "%'";
                     }
                 }
 
