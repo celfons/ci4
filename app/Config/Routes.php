@@ -43,7 +43,7 @@ $routes->add('/service-order/ajax_list', 'ServiceOrderController::index');
 $routes->add('/service-order/export', 'ServiceOrderController::index');
 $routes->add('/service-order/print', 'ServiceOrderController::index');
 
-$routes->group('auth', ['namespace' => 'IonAuth\Controllers'], function ($routes) {
+$routes->group('auth', ['namespace' => 'App\Controllers'], function ($routes) {
     $routes->add('login', 'Auth::login');
 	$routes->get('logout', 'Auth::logout');
 	$routes->add('forgot_password', 'Auth::forgot_password');
