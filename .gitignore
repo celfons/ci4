@@ -60,7 +60,6 @@ app/index.html
 spark
 app/Config/Honeypot.php
 app/Database
-app/Filters
 app/Config/Boot
 app/ThirdParty
 app/Language
@@ -75,7 +74,6 @@ app/Config/Email.php
 app/Config/Encryption.php
 app/Config/Events.php
 app/Config/Exceptions.php
-app/Config/Filters.php
 app/Config/ForeignCharacters.php
 app/Config/Format.php
 app/Config/Images.php
