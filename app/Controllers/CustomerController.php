@@ -13,6 +13,8 @@ class CustomerController extends BaseController
             $crud = new GroceryCrud();
 
             $crud->setTable('clientes');
+            $crud->setSubject('Clientes');
+
             $crud->fields(['nome']);
             $crud->columns(['nome']);
 

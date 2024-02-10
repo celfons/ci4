@@ -13,7 +13,7 @@ use CodeIgniter\Router\RouteCollection;
  $routes->set404Override();
  $routes->setAutoRoute(false);
 
- $routes->get('/', 'Home::index');
+ $routes->get('/', 'CustomerController::index');
 
 $routes->get('/customers', 'CustomerController::index', ['filter' => 'authFilter']);
 $routes->add('/customers/add', 'CustomerController::index');

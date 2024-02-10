@@ -17,6 +17,7 @@ class ServiceOrderController extends BaseController
             $crud->columns(['cliente_id','data']);
             $crud->setRelation('cliente_id', 'clientes', 'nome', []);
             $crud->displayAs('cliente_id', 'Cliente');
+            $crud->setSubject('Ordem de Serviço');
 
             $output = $crud->render();
 
