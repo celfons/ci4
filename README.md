@@ -1,4 +1,7 @@
 Grocery CRUD community edition for Codeigniter 4
+php spark migrate -n IonAuth
+composer update
+
 =============
 
 # Installation guide
