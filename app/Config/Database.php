@@ -26,7 +26,7 @@ class Database extends Config
      */
     public array $default = [
         'DSN'          => '',
-        'hostname'     => 'klbcedmmqp7w17ik.cbetxkdyhwsb.us-east-1.rds.amazonaws.com	',
+        'hostname'     => 'klbcedmmqp7w17ik.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
         'username'     => 'nw0sc0f0sf0471ha',
         'password'     => 'x31kjgo9h0s7tkz3',
         'database'     => 'bsfzki7p7pc9xtx0',
