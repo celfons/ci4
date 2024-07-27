@@ -1,23 +1,28 @@
 import os
 import openai
 import requests
+import subprocess
 
 # Configurar a chave de API da OpenAI
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # Função para obter mudanças no código
 def get_code_changes():
-    # Este exemplo supõe que você está utilizando git diff para obter mudanças.
-    # Dependendo do seu setup, você pode precisar ajustar isto.
-    changes = os.popen("git diff origin/main..HEAD").read()
+    # Utilizar a referência base da pull request para obter as mudanças
+    base_ref = os.getenv("GITHUB_BASE_REF")
+    head_ref = os.getenv("GITHUB_HEAD_REF")
+
+    # Executar o comando git diff com base nas referências da pull request
+    diff_command = f"git diff {base_ref}...{head_ref}"
+    changes = subprocess.check_output(diff_command, shell=True, text=True)
     return changes
 
 # Função para solicitar a análise da IA
 def review_code(changes):
     response = openai.Completion.create(
-      model="text-davinci-003",
-      prompt=f"Revise o seguinte código e sugira melhorias baseadas em clean code:\n\n{changes}",
-      max_tokens=500
+        model="text-davinci-003",
+        prompt=f"Revise o seguinte código e sugira melhorias baseadas em clean code:\n\n{changes}",
+        max_tokens=500
     )
     return response.choices[0].text.strip()
 
