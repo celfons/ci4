@@ -10,6 +10,7 @@ class ServiceOrderController extends BaseController
 	public function index()
 	{
         try {
+                
             $crud = new GroceryCrud();
 
             $crud->setTable('ordem_servico');

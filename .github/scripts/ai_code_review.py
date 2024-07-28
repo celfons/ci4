@@ -1,25 +1,45 @@
 import os
 import openai
 import requests
+import subprocess
+import json
 
 # Configurar a chave de API da OpenAI
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # Função para obter mudanças no código
 def get_code_changes():
-    # Este exemplo supõe que você está utilizando git diff para obter mudanças.
-    # Dependendo do seu setup, você pode precisar ajustar isto.
-    changes = os.popen("git diff origin/main..HEAD").read()
+    # Caminho para o arquivo JSON do evento
+    event_path = os.getenv("GITHUB_EVENT_PATH")
+    
+    # Carregar o JSON do evento
+    with open(event_path, 'r') as f:
+        event = json.load(f)
+    
+    # Obter SHA base da pull request
+    base_sha = event['pull_request']['base']['sha']
+    # Obter SHA head da pull request
+    head_sha = event['pull_request']['head']['sha']
+
+    # Verificar se as variáveis de ambiente estão definidas
+    if not base_sha or not head_sha:
+        raise ValueError("SHA base ou SHA de head não estão definidos corretamente.")
+
+    # Executar o comando git diff com base nos SHAs
+    diff_command = f"git diff {base_sha}...{head_sha}"
+    changes = subprocess.check_output(diff_command, shell=True, text=True)
     return changes
 
 # Função para solicitar a análise da IA
 def review_code(changes):
-    response = openai.Completion.create(
-      model="text-davinci-003",
-      prompt=f"Revise o seguinte código e sugira melhorias baseadas em clean code:\n\n{changes}",
-      max_tokens=500
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "system", "content": "Você é um assistente que ajuda a revisar código baseado em práticas de clean code."},
+            {"role": "user", "content": f"Revise o seguinte código e sugira melhorias baseadas em clean code:\n\n{changes}"}
+        ]
     )
-    return response.choices[0].text.strip()
+    return response.choices[0].message['content'].strip()
 
 # Função para adicionar comentário no pull request
 def post_comment_to_pr(comment):

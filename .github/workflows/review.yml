@@ -8,10 +8,13 @@ on:
 jobs:
   review:
     runs-on: ubuntu-latest
+    environment: main  # Especifica o ambiente
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v2
@@ -21,7 +24,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install openai requests
+          pip install openai==0.28 requests
 
       - name: Run AI Code Review
         env:
