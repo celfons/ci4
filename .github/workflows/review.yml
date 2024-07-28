@@ -8,6 +8,7 @@ on:
 jobs:
   review:
     runs-on: ubuntu-latest
+    environment: main  # Especifica o ambiente
 
     steps:
       - name: Checkout code
