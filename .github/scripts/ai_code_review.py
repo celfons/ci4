@@ -8,13 +8,13 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # Função para obter mudanças no código
 def get_code_changes():
-    # Utilizar a referência base e head da pull request para obter as mudanças
-    base_ref = os.getenv("GITHUB_BASE_REF")
-    head_ref = os.getenv("GITHUB_HEAD_REF")
-
-    # Obter o SHA da branch base e da branch de comparação
-    base_sha = os.getenv("GITHUB_EVENT_BASE_REF")
+    # Utilizar o SHA base da pull request e o SHA do commit atual
+    base_sha = os.getenv("GITHUB_EVENT_PULL_REQUEST_BASE_SHA")
     head_sha = os.getenv("GITHUB_SHA")
+
+    # Verificar se as variáveis de ambiente estão definidas
+    if not base_sha or not head_sha:
+        raise ValueError("SHA base ou SHA de head não estão definidos corretamente.")
 
     # Executar o comando git diff com base nos SHAs
     diff_command = f"git diff {base_sha}...{head_sha}"
