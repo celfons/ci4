@@ -33,7 +33,7 @@ def get_code_changes():
 # Função para solicitar a análise da IA
 def review_code(changes):
     response = openai.ChatCompletion.create(
-        model="gpt-4",
+        model="gpt-3.5-turbo",
         messages=[
             {"role": "system", "content": "Você é um assistente que ajuda a revisar código baseado em práticas de clean code."},
             {"role": "user", "content": f"Revise o seguinte código e sugira melhorias baseadas em clean code:\n\n{changes}"}
