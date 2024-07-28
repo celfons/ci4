@@ -32,12 +32,15 @@ def get_code_changes():
 
 # Função para solicitar a análise da IA
 def review_code(changes):
-    response = openai.Completion.create(
-        model="text-davinci-003",
-        prompt=f"Revise o seguinte código e sugira melhorias baseadas em clean code:\n\n{changes}",
+    response = openai.ChatCompletion.create(
+        model="gpt-4",
+        messages=[
+            {"role": "system", "content": "Você é um assistente que ajuda a revisar código baseado em práticas de clean code."},
+            {"role": "user", "content": f"Revise o seguinte código e sugira melhorias baseadas em clean code:\n\n{changes}"}
+        ],
         max_tokens=500
     )
-    return response.choices[0].text.strip()
+    return response['choices'][0]['message']['content'].strip()
 
 # Função para adicionar comentário no pull request
 def post_comment_to_pr(comment):
