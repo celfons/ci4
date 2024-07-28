@@ -1,16 +1,25 @@
-import os
+ import os
 import openai
 import requests
 import subprocess
+import json
 
 # Configurar a chave de API da OpenAI
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # Função para obter mudanças no código
 def get_code_changes():
-    # Utilizar o SHA base da pull request e o SHA do commit atual
-    base_sha = os.getenv("GITHUB_EVENT_PULL_REQUEST_BASE_SHA")
-    head_sha = os.getenv("GITHUB_SHA")
+    # Caminho para o arquivo JSON do evento
+    event_path = os.getenv("GITHUB_EVENT_PATH")
+    
+    # Carregar o JSON do evento
+    with open(event_path, 'r') as f:
+        event = json.load(f)
+    
+    # Obter SHA base da pull request
+    base_sha = event['pull_request']['base']['sha']
+    # Obter SHA head da pull request
+    head_sha = event['pull_request']['head']['sha']
 
     # Verificar se as variáveis de ambiente estão definidas
     if not base_sha or not head_sha:
